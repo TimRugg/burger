@@ -5,22 +5,31 @@
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
+    <div>
+      <li>
+        {{id}} 
+        {{burger_name}}
+      </li>
+    </div>
+      {{!-- {{> burgers/burger-block devoured=true}} --}}
     {{/unless}}
   {{/each}}
 </ul>
 
 <h2>Burgers you've et.</h2>
 
-<ul>
+{{!-- <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
-    {{/if}}
+    <div>
+      <li>{{id}}. {{burger_name}}</li>
+    </div> --}}
+                  {{!-- {{> burgers/burger-block devoured=false}} --}}
+    {{!-- {{/if}}
   {{/each}}
-</ul>
+</ul> --}}
 
-<h2>Add a Burger</h2>
+{{!-- <h2>Add a Burger</h2>
 <form class="create-form">
 
   <div class="form-group">
@@ -29,4 +38,4 @@
   </div>
 
   <button type="submit">Add</button>
-</form>
+</form> --}}
