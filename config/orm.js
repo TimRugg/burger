@@ -3,21 +3,21 @@ var connection = require("../config/connection.js");
 
 // Object for all our SQL statement functions.
 var orm = {
-    selectAll: function() {
+    selectAll: function(cb) {
       var queryString = "SELECT * FROM burgers";
       connection.query(queryString, function(err, result) {
         if (err) throw err;
         console.log(result);
       });
     },
-    insertOne: function(burger_name, devoured) {
+    insertOne: function(burger_name, devoured, cb) {
         var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)";
         connection.query(queryString, [burger_name, devoured], function(err, result) {
           if (err) throw err;
           console.log(result);
         });        
     },
-    updateOne: function(id, burger_name, devoured) {
+    updateOne: function(id, burger_name, devoured, cb) {
         var queryString = "UPDATE burgers (burger_name, devoured) VALUES (?, ?) WHERE id = ?";
         connection.query(queryString, [burger_name, devoured, id], function(err, result) {
           if (err) throw err;
