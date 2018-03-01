@@ -1,23 +1,27 @@
 // Import the ORM to create functions that will interact with the database.
 var orm = require("../config/orm.js");
 
+// cretae burger model using functions in config
 var burger = {
-    selectAll: function(cb) {
-      orm.selectAll(function(res) {
-        cb(res);
-      });
-    },
-    insertOne: function(burger_name, devoured, cb) {
-        orm.insertOne(burger_name, devoured, function(res) {
-            cb(res);
-        });
-    },
-    updateOne: function(id, burger_name, devoured, cb) {
-        orm.updateOne(id, burger_name, devoued, function(res) {
-            cb(res);
-        });
-    }
+  // get - read
+  selectAll: function (cb) {
+    orm.selectAll("burgers", function (res) {
+      cb(res);
+    });
+  },
+  // create
+  insertOne: function (cols, vals, cb) {
+    orm.insertOne("burgers", cols, vals, function (res) {
+      cb(res);
+    });
+  },
+  // update
+  updateOne: function (objColVals, condition, cb) {
+    orm.updateOne("burgers", objColVals, condition, function (res) {
+      cb(res);
+    });
+  }
 };
 
-// Export the database functions for the controller (catsController.js).
+// Export to the controller
 module.exports = burger;
